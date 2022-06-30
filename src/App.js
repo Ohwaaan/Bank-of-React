@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" render={HomeComponent}/>
+          <Route exact path="/" render={HomeComponent}/> 
           <Route exact path="/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
         </div>
@@ -44,5 +44,5 @@ class App extends Component {
     );
   }
 }
-
+  //asdf
 export default App;

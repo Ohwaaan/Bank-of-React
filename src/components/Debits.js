@@ -1,4 +1,6 @@
 // src/components/Debits.js
+import React, {Component} from 'react';
+import AccountBalance from './AccountBalance';
 
 const Debits = (props) => {
 	let debitsView = () => {

@@ -16,9 +16,9 @@ class Home extends Component {
         <br/>
         <Link to="/login">Login</Link>
         <br/>
-        <Link to="">Credits (to be implemented in the Assignment)</Link>
+        <Link to="/credits">Credits</Link> (to be implemented in the Assignment)
         <br/>
-        <Link to="">Debits (to be implemented in the Assignment)</Link>
+        <Link to="/debit">Debits</Link> (to be implemented in the Assignment)
         
         <AccountBalance accountBalance={this.props.accountBalance}/>
       </div>
