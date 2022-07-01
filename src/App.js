@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
+import CreditsTracker from './components/Credits';
 
 class App extends Component {
   constructor() {  // Create and initialize state
@@ -32,13 +33,14 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
-
+    const CreditsComponent = () => ( <CreditsTracker  />)   
     return (
       <Router>
         <div>
           <Route exact path="/" render={HomeComponent}/> 
           <Route exact path="/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
+          <Route exact path="/credits" render={CreditsComponent}/>
         </div>
       </Router>
     );
