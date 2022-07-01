@@ -1,62 +1,63 @@
 // src/components/Credits.js
 
+import axios from 'axios';
 import React, {Component} from 'react';
 //import AccountBalance from './AccountBalance';
 
-class CreditsTracker extends Component {
-    constructor(props) {
+
+////////////////////
+
+class ApiDataComponent extends Component {
+    constructor(props){  // Store received data in state's "users" object
       super(props);
-      this.state = {
-        error: null,
-        isLoaded: false,
+      this.state = {  // Initialize state with an empty users array
         items: []
-      };
-    }
-  
-    componentDidMount() {
-      fetch("https://moj-api.herokuapp.com/credits")
-        .then(res => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              isLoaded: true,
-              items: false
-            });
-          },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        )
-    }
-  
-    render() {
-      const { error, isLoaded, items } = this.state;
-      if (error) {
-        return <div>Error: {error.message}</div>;
-      } else if (!isLoaded) {
-        return <div>Loading...</div>;
-      } else {
-        return (
-          <ul>
-            <h1>Credits</h1>
-            {/* {items.map(item => (
-              <li key={item.id}>
-                {item.description} {item.date}
-              </li>
-            ))} */}
-          </ul>
-        );
       }
     }
+  
+    // Make async API call to retrieve data from remote website
+    async componentDidMount() {
+      let linkToAPI = 'https://moj-api.herokuapp.com/credits';  // Link to remote website API
+  
+      // Await for promise (completion) returned from API call
+      try {  // Accept success response as array of JSON objects (users)
+        let response = await axios.get(linkToAPI);
+        console.log(response);  // Print out response
+        // To get data object in the response, need to use "response.data"
+        this.setState({items: response.data});  // Store received data in state's "users" object
+      } 
+      catch (error) {  // Print out errors at console when there is an error response
+        if (error.response) {
+          // The request was made, and the server responded with error message and status code.
+          console.log(error.response.data);  // Print out error message (e.g., Not Found)
+          console.log(error.response.status);  // Print out error status code (e.g., 404)
+        }    
+      }
+    }  
+  
+    render() {  // Parse each element in the user JSON array returned from API call
+      return (
+        <div className="container">
+          {
+            this.state.items.map( (item) => {  // Extract "id", "name", and "email" properties of each user JSON array element
+                return (
+                  <div key={item.id}>
+                    <h3> {item.amount}: {item.description}</h3>
+                    <h4> {item.date}</h4> 
+                    <p>------------------------------</p>
+                  </div>
+                )
+              }
+            )
+          }
+        </div>
+      )
+    }
   }
+  
+  export default ApiDataComponent;
 
-  export default CreditsTracker;
+///////////////////
 
 //{this.props.accountBalance} = used to keep track of changed account total
 
