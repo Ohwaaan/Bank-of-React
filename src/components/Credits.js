@@ -5,14 +5,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom'
 import '../App';
-import App from '../App';
-import AccountBalance from './AccountBalance';
 import { v4 as uuidv4 } from 'uuid';
 
 class ApiDataComponent extends Component {
   constructor(props) {  // Store received data in state's "users" object
     super(props);
-    // console.log('props obj', props)
     this.state = {  // Initialize state with an empty users array
       items: [],
       creditAmount: '',
@@ -46,8 +43,6 @@ class ApiDataComponent extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.updateBalance(this.state.creditAmount)
-    // console.log(this.state.summary)
-    // console.log(this.state.amount)
     this.state.newCredit.id = uuidv4()
     this.state.newCredit.amount = this.state.amount
     this.state.newCredit.summary = this.state.summary

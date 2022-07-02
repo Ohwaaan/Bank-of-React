@@ -31,7 +31,6 @@ class App extends Component {
   updateBalance = (newTotal) => { 
     let newBalance = Number(this.state.accountBalance) + Number(newTotal) 
     this.state.accountBalance = newBalance
-    // console.log(this.state.accountBalance)
   }
 
   // Create Routes and React elements to be rendered using React components
