@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
-import CreditsTracker from './components/Credits';
+import ApiDataComponent from './components/Credits';
 
 class App extends Component {
   constructor() {  // Create and initialize state
@@ -16,6 +16,7 @@ class App extends Component {
         userName: 'Joe Smith',
         memberSince: '11/22/99',
       }
+      
     }
   }
 
@@ -26,6 +27,13 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
+  // Update accountBalance
+  updateBalance = (newTotal) => { 
+    let newBalance = Number(this.state.accountBalance) + Number(newTotal) 
+    this.state.accountBalance = newBalance
+    // console.log(this.state.accountBalance)
+  }
+
   // Create Routes and React elements to be rendered using React components
   render() {  
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
@@ -33,7 +41,7 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
-    const CreditsComponent = () => ( <CreditsTracker  />)   
+    const CreditsComponent = () => ( <ApiDataComponent updateBalance={this.updateBalance} />)   
     return (
       <Router>
         <div>
@@ -46,5 +54,5 @@ class App extends Component {
     );
   }
 }
-  //asdf
+
 export default App;
