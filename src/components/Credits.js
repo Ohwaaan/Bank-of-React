@@ -16,14 +16,14 @@ class ApiDataComponent extends Component {
 
       newCredit: { 
         amount:'',
-        summary:'',
+        description:'',
       }
     }
   }
 
   handleDescriptionChange = (event) => {
     this.setState({ 
-      summary: event.target.value,
+      description: event.target.value,
     })
     
   }
@@ -43,17 +43,17 @@ class ApiDataComponent extends Component {
 
   this.state.newCredit.id = uuidv4()
   this.state.newCredit.amount = this.state.amount
-  this.state.newCredit.summary = this.state.summary
+  this.state.newCredit.description = this.state.description
   this.state.newCredit.date = new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
 
   this.setState({
     amount: this.state.newCredit.amount,
     id: uuidv4(),
-    summary: this.state.newCredit.summary,
+    description: this.state.newCredit.description,
     date: new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
   })
 
-    this.props.credits.push(this.state.newCredit)
+  this.props.credits.push(this.state.newCredit)
 
     console.log(this.state.items)
 
