@@ -93,6 +93,7 @@ class ApiDataComponent extends Component {
             </div>
             </form>
             <Link to="/">Return to Home</Link>
+            <AccountBalance accountBalance={this.props.accountBalance}/>
         </div>
         
         

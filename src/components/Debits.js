@@ -4,30 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom'
 import AccountBalance from './AccountBalance';
-
 import '../App';
-
-// const Debits = (props) => {
-// 	let debitsView = () => {
-//     const { debits } = props;
-//     return debits.map((debit) => {
-//       let date = debit.date.slice(0,10);
-//       return <li key={debit.id}>{debit.amount} {debit.description} {date}</li>
-//     }) 
-//   }
-//   return (
-//     <div>
-//       <h1>Debits</h1>
-//       {debitsView()}
-//       <form onSubmit={props.addDebit}>
-//         <input type="text" name="description" />
-//         <input type="number" name="amount" />
-//         <button type="submit">Add Debit</button>
-//       </form>
-//     </div>
-//   )
-// }
-
 
 class Debits extends Component {
   
@@ -65,10 +42,10 @@ class Debits extends Component {
     event.preventDefault()
     this.props.updateBalanceDebit(this.state.debitAmount)
 
-  //this.state.newDebit.id = uuidv4()
+  this.state.newDebit.id = uuidv4()
   this.state.newDebit.amount = this.state.amount
   this.state.newDebit.description = this.state.description
-  //this.state.newDebit.date = new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
+  this.state.newDebit.date = new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
 
   this.setState({
     id: uuidv4(),
@@ -117,7 +94,7 @@ class Debits extends Component {
             </div>
             </form>
             <Link to="/">Return to Home</Link>
-            <AccountBalance accountBalance={this.props.accountBalance}/>
+            
         </div>
         
         
