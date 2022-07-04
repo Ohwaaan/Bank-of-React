@@ -44,7 +44,7 @@ class ApiDataComponent extends Component {
     event.preventDefault()
     this.props.updateBalanceCredit(this.state.creditAmount)
 
-  // add to newCredits object 
+  // update newCredits object 
   this.state.newCredit.id = uuidv4()
   this.state.newCredit.amount = this.state.amount
   this.state.newCredit.description = this.state.description
