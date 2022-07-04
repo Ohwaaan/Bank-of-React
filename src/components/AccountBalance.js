@@ -8,10 +8,7 @@ class AccountBalance extends Component {
     // re-renders the component
     this.setState({});
   };
-
   render() {
-    
-    
     return (
 
       <div>
@@ -20,7 +17,6 @@ class AccountBalance extends Component {
       
     );
   }
-
 }
 
 export default AccountBalance;

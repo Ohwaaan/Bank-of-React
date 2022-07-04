@@ -55,7 +55,6 @@ class ApiDataComponent extends Component {
   })
 
   this.props.credits.push(this.state.newCredit)
-  
 
   }
   
