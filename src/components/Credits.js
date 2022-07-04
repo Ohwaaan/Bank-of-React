@@ -52,7 +52,7 @@ class ApiDataComponent extends Component {
       id: uuidv4(),
       description: this.state.newCredit.description,
       date: new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate(),
-      //accountBalance: this.state.accountBalance += this.state.newCredit.amount
+      accountBalance: this.state.accountBalance//+= this.state.newCredit.amount
     })
 
     this.props.credits.push(this.state.newCredit)
@@ -94,7 +94,7 @@ class ApiDataComponent extends Component {
             </div>
             </form>
             <Link to="/">Return to Home</Link>
-            <AccountBalance accountBalance={this.props.accountBalance}/>
+            <AccountBalance accountBalance={this.props.accountBalance + this.state.newCredit.amount}/>
         </div>
       )
     }
