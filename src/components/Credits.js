@@ -47,6 +47,7 @@ class ApiDataComponent extends Component {
     this.state.newCredit.description = this.state.description
     this.state.newCredit.date = new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
 
+
   this.setState({
     amount: this.state.newCredit.amount,
     id: uuidv4(),

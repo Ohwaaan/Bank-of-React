@@ -8,7 +8,6 @@ import LogIn from './components/Login';
 import ApiDataComponent from './components/Credits';
 import Debits from './components/Debits';
 import axios from 'axios';
-import Debits from './components/Debits';
 
 class App extends Component {
   constructor(props) {  // Create and initialize state
