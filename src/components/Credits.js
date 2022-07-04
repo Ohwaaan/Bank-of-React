@@ -42,10 +42,10 @@ class ApiDataComponent extends Component {
     event.preventDefault()
     this.props.updateBalanceCredit(this.state.creditAmount)
 
-  this.state.newCredit.id = uuidv4()
-  this.state.newCredit.amount = this.state.amount
-  this.state.newCredit.description = this.state.description
-  this.state.newCredit.date = new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
+    this.state.newCredit.id = uuidv4()
+    this.state.newCredit.amount = this.state.amount
+    this.state.newCredit.description = this.state.description
+    this.state.newCredit.date = new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
 
   this.setState({
     amount: this.state.newCredit.amount,
@@ -55,9 +55,9 @@ class ApiDataComponent extends Component {
   })
 
   this.props.credits.push(this.state.newCredit)
-  
 
   }
+
   
     render() {  // Parse each element in the user JSON array returned from API call
       if (this.state.redirect) {  // Redirect to "User Profile" page when "Log In" button is clicked
@@ -66,6 +66,7 @@ class ApiDataComponent extends Component {
 
       return (
         <div className="container">
+          <h1>Credits</h1>
           {
            this.props.credits.map((credit) => {  // Extract "id", "name", and "email" properties of each user JSON array element
               return (
@@ -95,17 +96,7 @@ class ApiDataComponent extends Component {
             <Link to="/">Return to Home</Link>
             <AccountBalance accountBalance={this.props.accountBalance}/>
         </div>
-        
-        
       )
-      
-
-      
     }
-  
   }
-
-
   export default ApiDataComponent;
-
-

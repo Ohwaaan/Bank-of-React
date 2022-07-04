@@ -8,19 +8,15 @@ class AccountBalance extends Component {
     // re-renders the component
     this.setState({});
   };
-
   render() {
-    
-    
     return (
-
       <div onChange={this.refresh}>
-        Balance: {this.props.accountBalance}
+        Balance: {this.props.accountBalance.toFixed(2)}
+
       </div>
       
     );
   }
-
 }
 
 export default AccountBalance;

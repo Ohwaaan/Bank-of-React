@@ -6,6 +6,7 @@ import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
 import ApiDataComponent from './components/Credits';
+import Debits from './components/Debits';
 import axios from 'axios';
 import Debits from './components/Debits';
 
@@ -74,8 +75,10 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
+
     const CreditsComponent = () => ( <ApiDataComponent updateBalanceCredit={this.updateBalanceCredit} credits={this.state.credits} accountBalance={this.state.accountBalance} />)   
     const DebitsComponent = () => (<Debits updateBalanceDebit={this.updateBalanceDebit} debits={this.state.debits} accountBalance={this.state.accountBalance} />)   
+
     return (
       <Router>
         <div>
