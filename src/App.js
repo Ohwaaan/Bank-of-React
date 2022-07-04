@@ -58,14 +58,14 @@ class App extends Component {
   updateBalanceCredit = (newTotal) => { 
     let newBalance = Number(this.state.accountBalance) + Number(newTotal) 
     newBalance = Math.round(newBalance * 100) / 100
-    this.state.accountBalance = newBalance
+    this.setState({accountBalance: newBalance})
   }
 
   // Update accountBalance -- Add Debit --
   updateBalanceDebit = (newTotal) => { 
     let newBalance = Number(this.state.accountBalance) - Number(newTotal) 
     newBalance = Math.round(newBalance * 100) / 100
-    this.state.accountBalance = newBalance
+    this.setState({accountBalance: newBalance})
   }
 
 
