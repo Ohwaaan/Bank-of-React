@@ -14,7 +14,7 @@ class AccountBalance extends Component {
     
     return (
 
-      <div onChange={this.refresh}>
+      <div>
         Balance: {this.props.accountBalance}
       </div>
       

@@ -66,6 +66,7 @@ class ApiDataComponent extends Component {
 
       return (
         <div className="container">
+          <h1>Credits</h1>
           {
            this.props.credits.map((credit) => {  // Extract "id", "name", and "email" properties of each user JSON array element
               return (
@@ -95,17 +96,7 @@ class ApiDataComponent extends Component {
             <Link to="/">Return to Home</Link>
             <AccountBalance accountBalance={this.props.accountBalance}/>
         </div>
-        
-        
       )
-      
-
-      
     }
-  
   }
-
-
   export default ApiDataComponent;
-
-
