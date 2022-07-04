@@ -58,12 +58,14 @@ class App extends Component {
   // Update accountBalance ++ Add Credit ++
   updateBalanceCredit = (newTotal) => { 
     let newBalance = Number(this.state.accountBalance) + Number(newTotal) 
+    newBalance = Math.round(newBalance * 100) / 100
     this.state.accountBalance = newBalance
   }
 
   // Update accountBalance -- Add Debit --
   updateBalanceDebit = (newTotal) => { 
     let newBalance = Number(this.state.accountBalance) - Number(newTotal) 
+    newBalance = Math.round(newBalance * 100) / 100
     this.state.accountBalance = newBalance
   }
 
