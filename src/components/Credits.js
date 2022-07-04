@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom'
 import '../App';
 import { v4 as uuidv4 } from 'uuid';
+import AccountBalance from './AccountBalance';
 
 class ApiDataComponent extends Component {
   constructor() {  // Store received data in state's "users" object
@@ -39,7 +40,7 @@ class ApiDataComponent extends Component {
   // When user clicks "Add Credit" button, store credit date to items array
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.updateBalance(this.state.creditAmount)
+    this.props.updateBalanceCredit(this.state.creditAmount)
 
   this.state.newCredit.id = uuidv4()
   this.state.newCredit.amount = this.state.amount
@@ -54,8 +55,7 @@ class ApiDataComponent extends Component {
   })
 
   this.props.credits.push(this.state.newCredit)
-
-    console.log(this.state.items)
+  
 
   }
   
