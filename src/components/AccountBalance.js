@@ -3,11 +3,7 @@
 import React, {Component} from 'react';
 
 class AccountBalance extends Component {
-
-  refresh = () => {
-    // re-renders the component
-    this.setState({});
-  };
+  
   render() {
     return (
 

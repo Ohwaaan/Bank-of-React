@@ -14,8 +14,8 @@ class App extends Component {
     super(props); 
     this.state = {
       accountBalance: 100000.59,
-      credits: [],
-      debits: [],
+      credits: [], // store credits
+      debits: [], // store debits
       currentUser: {
         userName: 'Joe Smith',
         memberSince: '11/22/99',
@@ -33,7 +33,7 @@ class App extends Component {
         try {  // Accept success response as array of JSON objects (users)
           let response = await axios.get(linkToAPI);
           let responseDebits = await axios.get(linkToAPIDebits)
-          // console.log(response);  // Print out response
+
           // To get data object in the response, need to use "response.data"
           this.setState({credits: response.data});  // Store received data in state's "users" object
           this.setState({debits: responseDebits.data})

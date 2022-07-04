@@ -10,18 +10,19 @@ class Debits extends Component {
   
   constructor(props) {  // Store received data in state's "users" object
     super(props);
-    this.state = {  // Initialize state with an empty users array
+    this.state = {  // Initialize state with an empty users array and debitAmount 
       items: [],
       debitAmount: '',
       redirect: false,
 
-      newDebit: { 
+      newDebit: {  //object for new debits
         amount:'',
         description:'',
       }
     }
   }
 
+  // handle event when text entered in description field 
   handleDescriptionChange = (event) => {
     this.setState({ 
       description: event.target.value,
@@ -29,6 +30,7 @@ class Debits extends Component {
     
   }
 
+  // handle event when amount entered in amount field 
   handleChange = (event) => {
     this.setState({ 
       amount: event.target.value,
@@ -42,6 +44,7 @@ class Debits extends Component {
     event.preventDefault()
     this.props.updateBalanceDebit(this.state.debitAmount)
 
+  // update to newDebit object   
   this.state.newDebit.id = uuidv4()
   this.state.newDebit.amount = this.state.amount
   this.state.newDebit.description = this.state.description
@@ -54,16 +57,16 @@ class Debits extends Component {
     date: new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate(),
   })
 
+  // add to debits array
   this.props.debits.push(this.state.newDebit)
-
 
 
   }
   
-    render() {  // Parse each element in the user JSON array returned from API call
-      // if (this.state.redirect) {  // Redirect to "User Profile" page when "Log In" button is clicked
-      //     return (<Redirect to="/"/>)
-      //   }
+    render() { 
+      if (this.state.redirect) {  // Redirect to "Home" page when  redirect is true 
+          return (<Redirect to="/"/>)
+        }
 
       return (
         <div className="container">

@@ -10,18 +10,19 @@ import AccountBalance from './AccountBalance';
 class ApiDataComponent extends Component {
   constructor() {  // Store received data in state's "users" object
     super();
-    this.state = {  // Initialize state with an empty users array
+    this.state = {  // Initialize state with an empty users array and creditAmount
       items: [],
       creditAmount: '',
       redirect: false,
 
-      newCredit: { 
+      newCredit: {  // object for new credits 
         amount:'',
         description:'',
       }
     }
   }
 
+  // handle event when text entered in description field 
   handleDescriptionChange = (event) => {
     this.setState({ 
       description: event.target.value,
@@ -29,6 +30,7 @@ class ApiDataComponent extends Component {
     
   }
 
+  // handle event when amount entered in amount field 
   handleChange = (event) => {
     this.setState({ 
       amount: event.target.value,
@@ -42,11 +44,13 @@ class ApiDataComponent extends Component {
     event.preventDefault()
     this.props.updateBalanceCredit(this.state.creditAmount)
 
+  // add to newCredits object 
   this.state.newCredit.id = uuidv4()
   this.state.newCredit.amount = this.state.amount
   this.state.newCredit.description = this.state.description
   this.state.newCredit.date = new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
 
+  
   this.setState({
     amount: this.state.newCredit.amount,
     id: uuidv4(),
@@ -54,12 +58,13 @@ class ApiDataComponent extends Component {
     date: new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
   })
 
+  // add to credits array 
   this.props.credits.push(this.state.newCredit)
 
   }
   
-    render() {  // Parse each element in the user JSON array returned from API call
-      if (this.state.redirect) {  // Redirect to "User Profile" page when "Log In" button is clicked
+    render() {  // 
+      if (this.state.redirect) {  // Redirect to "Home" page when  redirect is true 
           return (<Redirect to="/"/>)
         }
 
@@ -67,7 +72,7 @@ class ApiDataComponent extends Component {
         <div className="container">
           <h1>Credits</h1>
           {
-           this.props.credits.map((credit) => {  // Extract "id", "name", and "email" properties of each user JSON array element
+           this.props.credits.map((credit) => {  // Extract "id", "amount", "description", and date properties of each item JSON array element
               return (
                         <div key={credit.id}>
                             <li>${credit.amount} {credit.description} {credit.date}</li>
@@ -77,6 +82,7 @@ class ApiDataComponent extends Component {
               }
             )
           }
+
             <form onSubmit={this.handleSubmit}>
             <div>
                 <label> Description</label>
