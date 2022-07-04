@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom'
 import '../App';
 import { v4 as uuidv4 } from 'uuid';
+import AccountBalance from './AccountBalance';
 
 class ApiDataComponent extends Component {
   constructor() {  // Store received data in state's "users" object
@@ -41,23 +42,22 @@ class ApiDataComponent extends Component {
     event.preventDefault()
     this.props.updateBalance(this.state.creditAmount)
 
-  this.state.newCredit.id = uuidv4()
-  this.state.newCredit.amount = this.state.amount
-  this.state.newCredit.description = this.state.description
-  this.state.newCredit.date = new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
+    this.state.newCredit.id = uuidv4()
+    this.state.newCredit.amount = this.state.amount
+    this.state.newCredit.description = this.state.description
+    this.state.newCredit.date = new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
 
-  this.setState({
-    amount: this.state.newCredit.amount,
-    id: uuidv4(),
-    description: this.state.newCredit.description,
-    date: new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate()
-  })
+    this.setState({
+      amount: this.state.newCredit.amount,
+      id: uuidv4(),
+      description: this.state.newCredit.description,
+      date: new Date().getFullYear() + '-' + (new Date().getMonth() +1)+ '-' + new Date().getDate(),
+      //accountBalance: this.state.accountBalance += this.state.newCredit.amount
+    })
 
-  this.props.credits.push(this.state.newCredit)
-
+    this.props.credits.push(this.state.newCredit)
     console.log(this.state.items)
-
-  }
+    }
   
     render() {  // Parse each element in the user JSON array returned from API call
       if (this.state.redirect) {  // Redirect to "User Profile" page when "Log In" button is clicked
@@ -66,6 +66,7 @@ class ApiDataComponent extends Component {
 
       return (
         <div className="container">
+          <h1>Credits</h1>
           {
            this.props.credits.map((credit) => {  // Extract "id", "name", and "email" properties of each user JSON array element
               return (
@@ -93,18 +94,9 @@ class ApiDataComponent extends Component {
             </div>
             </form>
             <Link to="/">Return to Home</Link>
+            <AccountBalance accountBalance={this.props.accountBalance}/>
         </div>
-        
-        
       )
-      
-
-      
     }
-  
   }
-
-
   export default ApiDataComponent;
-
-
